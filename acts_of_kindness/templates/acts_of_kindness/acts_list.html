@@ -3,8 +3,6 @@
 
 {% block extra_css %}
 {{ block.super }}
-<link rel="stylesheet"
-    href="{% static 'acts_of_kindness/css/acts_of_kindness.css' %}">
 {% endblock %}
 
 
@@ -16,19 +14,19 @@
 {% endcomment %}
 <h1>Acts of Kindness</h1>
 {% if acts %}
-    <ul>
+<ul>
     {% for act in acts %}
-        <li>
-            <h2><a href="{% url 'act_detail' act.id %}">{{ act.name }}</a></h2>
-            <p>{{ act.description|truncatewords:20 }}</p>
-            {% if act.image %}
-            <img src="{{ act.image.url }}" alt="{{ act.name }}" style="max-width: 100px; max-height: 100px;">
-            {% endif %}
-        </li>
+    <li>
+        <h2><a href="{% url 'act_detail' act.id %}">{{ act.name }}</a></h2>
+        <p>{{ act.description|truncatewords:20 }}</p>
+        {% if act.image %}
+        <img src="{{ act.image.url }}" alt="{{ act.name }}" style="max-width: 100px; max-height: 100px;">
+        {% endif %}
+    </li>
     {% endfor %}
-    </ul>
+</ul>
 {% else %}
-    <p>No acts of kindness found.</p>
+<p>No acts of kindness found.</p>
 
 {% endif %}
 
